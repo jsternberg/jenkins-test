@@ -1,12 +1,11 @@
-pipeline {
-  agent any
-  stages {
-    def builds = ["Build 1", "Build 2"]
-    builds.each {
-      stage(it) {
-        steps {
-          echo "Hello, World!"
-        }
+@Library("imperative-when")
+
+node {
+  def builds = ["Build 1": true, "Build 2": false]
+  builds.each {
+    stage(it.key) {
+      when(it.value) {
+        echo "Hello, World!"
       }
     }
   }
