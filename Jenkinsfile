@@ -1,4 +1,4 @@
-@Library("imperative-when")
+library "imperative-when"
 
 node {
   def builds = ["Build 1": true, "Build 2": false]
